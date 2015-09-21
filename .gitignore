@@ -1,0 +1,7 @@
+.classpath
+.project
+.settings/
+git ignore.txt
+
+target/
+/build/

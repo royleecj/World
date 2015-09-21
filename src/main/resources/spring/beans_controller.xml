@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+<context:component-scan base-package="com.webapp.controller" />  <!-- 자동설정 -->
+<!-- <bean class="com.webapp.controller.CityController"/> -->
+<!-- <bean class="com.webapp.controller.LocaleController"> -->
+<!-- 	<property name="" ref="localeResolver"/> -->
+<!-- </bean> -->
+
+
+<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basenames">
+		<list>
+			<value>message.error</value>
+			<value>message.label</value>
+		</list>			
+	</property>
+	<property name="fallbackToSystemLocale" value="false"/>
+</bean>
+
+<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+	<property name="defaultLocale" value="en"/> <!-- webbrowser설정과 상관없이 디폴트 로케일은 항상 영어로  -->
+</bean>
+
+
+<bean id="cityCommandValidator" class="com.webapp.validator.CityCommandValidator"/>
+
+</beans>
